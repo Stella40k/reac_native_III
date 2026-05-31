@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: #f8f4ed;
+  color: #5f4b45;
+}
+
+.app {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #8d6a9f;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+h2 {
+  color: #8d6a9f;
+}
+
+form {
+  background: #fffaf5;
+  border: 2px solid #d8b4c4;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+
+  border-radius: 12px;
+  border: 1px solid #d8b4c4;
+
+  background: white;
+}
+
+input:focus {
+  outline: none;
+  border-color: #a8c3a0;
+}
+
+button {
+  background: #d8b4c4;
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+
+  padding: 10px 16px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.buscar {
+  margin-bottom: 25px;
+}
+
+.lista-plantas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.card-planta {
+  background: #fffaf5;
+
+  border: 2px solid #e8d9c8;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.card-planta:hover {
+  transform: translateY(-5px);
+}
+
+.card-planta h2 {
+  margin-top: 0;
+}
+
+.eliminar-btn {
+  background: #cfa7b8;
+}
+
+.eliminar-btn:hover {
+  background: #b98ea1;
+}
+.subtitulo {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #7b5e57;
+  font-style: italic;
+}
