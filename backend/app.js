@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import "./models/Planta.js";
+import "./models/Usuario.js";
 import { database } from "./config/db.js";
 import { envs } from "./config/envs.js";
 import plantaRoutes from "./routes/plantaRoutes.js";
