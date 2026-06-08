@@ -111,3 +111,31 @@ button:hover {
   color: #7b5e57;
   font-style: italic;
 }
+.logout-btn {
+  margin-bottom: 20px;
+
+  background: #d8b4c4;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 10px 15px;
+
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #c59ab0;
+}
+.login-card {
+  max-width: 400px;
+  margin: auto;
+  padding: 30px;
+  background: #fffaf5;
+  border-radius: 25px;
+  border: 2px solid #d8b4c4;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}

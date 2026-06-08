@@ -1,12 +1,16 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { useEffect, useState, useMemo, useCallback } from "react";
+
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+
 import {
   obtenerPlantas,
   eliminarPlanta,
   crearPlanta,
 } from "./services/plantaService";
-import PlantaList from "./components/PlantaList";
-import PlantaForm from "./components/PlantaForm";
-import "./App.css";
+
 function App() {
   const [plantas, setPlantas] = useState([]);
   const [busqueda, setBusqueda] = useState("");
@@ -20,6 +24,7 @@ function App() {
         console.error(error);
       }
     };
+
     cargarPlantas();
   }, []);
 
@@ -32,6 +37,7 @@ function App() {
   const handleEliminar = useCallback(async (id) => {
     try {
       await eliminarPlanta(id);
+
       setPlantas((prev) => prev.filter((planta) => planta.id !== id));
     } catch (error) {
       console.error(error);
@@ -49,23 +55,24 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <h1>𓍢ִ໋🌷͙֒𓍢ִ Boticario ˚⊱🪷⊰˚ Mágico 𓍢ִ໋🌷͙֒𓍢ִ</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
 
-      <p className="subtitulo">
-        ⭒˚.⋆Catálogo de hierbas, flores y raíces utilizadas por curanderas de la
-        zona⭒˚.⋆
-      </p>
-
-      <input
-        type="text"
-        placeholder="Buscar planta..."
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-      />
-      <PlantaForm onAgregar={handleAgregar} />
-      <PlantaList plantas={plantasFiltradas} onEliminar={handleEliminar} />
-    </div>
+        <Route
+          path="/home"
+          element={
+            <Home
+              plantasFiltradas={plantasFiltradas}
+              handleEliminar={handleEliminar}
+              handleAgregar={handleAgregar}
+              busqueda={busqueda}
+              setBusqueda={setBusqueda}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

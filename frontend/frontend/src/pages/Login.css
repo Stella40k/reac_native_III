@@ -6,8 +6,12 @@
   align-items: center;
 
   background:
-    linear-gradient(rgba(248, 244, 237, 0.9), rgba(248, 244, 237, 0.9)),
-    url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97");
+    linear-gradient(rgba(248, 244, 237, 0.7), rgba(248, 244, 237, 0.7)),
+    url("https://images.unsplash.com/photo-1511497584788-876760111969");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   background-size: cover;
   background-position: center;
@@ -15,15 +19,10 @@
 
 .login-card {
   width: 400px;
-
   padding: 40px;
-
   background: #fffaf5;
-
   border-radius: 25px;
-
   border: 2px solid #d8b4c4;
-
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -35,7 +34,6 @@
 .subtitle {
   text-align: center;
   color: #7b5e57;
-
   margin-bottom: 25px;
 }
 
@@ -47,26 +45,40 @@
 
 .login-card input {
   padding: 12px;
-
   border-radius: 12px;
-
   border: 1px solid #d8b4c4;
 }
 
 .login-card button {
   background: #d8b4c4;
-
   color: white;
-
   padding: 12px;
-
   border: none;
-
   border-radius: 12px;
-
   cursor: pointer;
 }
 
 .login-card button:hover {
   background: #c59ab0;
+}
+.link-text {
+  text-align: center;
+  margin-top: 20px;
+  color: #7b5e57;
+}
+.link-text a {
+  margin-left: 6px;
+  color: #8d6a9f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-text a:hover {
+  text-decoration: underline;
+}
+
+.error-text {
+  color: crimson;
+  text-align: center;
+  margin-top: 10px;
 }

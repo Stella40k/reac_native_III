@@ -1,60 +1,35 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
-import {
-  obtenerPlantas,
-  eliminarPlanta,
-  crearPlanta,
-} from "./services/plantaService";
-import PlantaList from "./components/PlantaList";
-import PlantaForm from "./components/PlantaForm";
-import "./App.css";
-function App() {
-  const [plantas, setPlantas] = useState([]);
-  const [busqueda, setBusqueda] = useState("");
+import { useNavigate } from "react-router-dom";
 
-  useEffect(() => {
-    const cargarPlantas = async () => {
-      try {
-        const respuesta = await obtenerPlantas();
-        setPlantas(respuesta.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    cargarPlantas();
-  }, []);
+import PlantaList from "../components/PlantaList";
+import PlantaForm from "../components/PlantaForm";
 
-  const plantasFiltradas = useMemo(() => {
-    return plantas.filter((planta) =>
-      planta.nombre.toLowerCase().includes(busqueda.toLowerCase()),
-    );
-  }, [plantas, busqueda]);
+import "../App.css";
 
-  const handleEliminar = useCallback(async (id) => {
-    try {
-      await eliminarPlanta(id);
-      setPlantas((prev) => prev.filter((planta) => planta.id !== id));
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+function Home({
+  plantasFiltradas,
+  handleEliminar,
+  handleAgregar,
+  busqueda,
+  setBusqueda,
+}) {
+  const navigate = useNavigate();
 
-  const handleAgregar = async (planta) => {
-    try {
-      const respuesta = await crearPlanta(planta);
-
-      setPlantas((prev) => [...prev, respuesta.data]);
-    } catch (error) {
-      console.error(error);
-    }
+  const cerrarSesion = () => {
+    localStorage.removeItem("usuario");
+    navigate("/");
   };
 
   return (
     <div className="app">
+      <button className="logout-btn" onClick={cerrarSesion}>
+        Cerrar sesión
+      </button>
+
       <h1>𓍢ִ໋🌷͙֒𓍢ִ Boticario ˚⊱🪷⊰˚ Mágico 𓍢ִ໋🌷͙֒𓍢ִ</h1>
 
       <p className="subtitulo">
-        ⭒˚.⋆Catálogo de hierbas, flores y raíces utilizadas por curanderas de la
-        zona⭒˚.⋆
+        ⭒˚.⋆ Catálogo de hierbas, flores y raíces utilizadas por curanderas de
+        la zona ⭒˚.⋆
       </p>
 
       <input
@@ -63,10 +38,12 @@ function App() {
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
       />
+
       <PlantaForm onAgregar={handleAgregar} />
+
       <PlantaList plantas={plantasFiltradas} onEliminar={handleEliminar} />
     </div>
   );
 }
 
-export default App;
+export default Home;
